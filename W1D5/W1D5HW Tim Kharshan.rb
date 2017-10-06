@@ -18,7 +18,7 @@ class Stack
   end
 end
 
-class queue
+class Queue
   @queue
   def initialize
     @queue=[]
@@ -33,7 +33,7 @@ class queue
   end
 end
 
-class map
+class Map
   @map
   def initialize()
     @map=[]
@@ -43,7 +43,7 @@ class map
     @map.each do |entry|
       if entry[0]==key
         entry[1]=val
-        return
+        return self
       end
     end
     @map.push([key,val])

@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books=Book.all
+    @books = Book.all
     # render :index
   end
 
@@ -19,14 +19,13 @@ class BooksController < ApplicationController
       book = Book.find(params[:id])
       book.destroy
     rescue
-      puts "couldnt find that book"
+      puts 'couldnt find that book'
     end
     redirect_to books_url
-
-
   end
 
   private
+
   def book_params
     params.require(:book).permit(:title, :author)
   end

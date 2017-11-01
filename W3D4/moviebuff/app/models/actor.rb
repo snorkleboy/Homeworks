@@ -13,8 +13,8 @@ class Actor < ApplicationRecord
   # source: :movie
 
   has_many :directed_movies,
-    foreign_key: :director_id,
-    class_name: 'Movie'
+           foreign_key: :director_id,
+           class_name: 'Movie'
   # shorthand for:
   # has_many :directed_movies,
   # foreign_key: :director_id,

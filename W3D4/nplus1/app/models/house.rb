@@ -1,12 +1,12 @@
 class House < ApplicationRecord
   has_many :gardeners,
-    class_name: 'Gardener',
-    foreign_key: :house_id,
-    primary_key: :id
+           class_name: 'Gardener',
+           foreign_key: :house_id,
+           primary_key: :id
 
   has_many :plants,
-    through: :gardeners,
-    source: :plants
+           through: :gardeners,
+           source: :plants
 
   def n_plus_one_seeds
     plants = self.plants
@@ -19,9 +19,6 @@ class House < ApplicationRecord
   end
 
   def better_seeds_query
-
-
-
     plants = self.plants.includes(:seeds)
     seeds = []
     plants.each do |plant|

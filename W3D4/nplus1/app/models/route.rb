@@ -1,8 +1,8 @@
 class Route < ApplicationRecord
   has_many :buses,
-    class_name: 'Bus',
-    foreign_key: :route_id,
-    primary_key: :id
+           class_name: 'Bus',
+           foreign_key: :route_id,
+           primary_key: :id
 
   def n_plus_one_drivers
     buses = self.buses
@@ -20,11 +20,11 @@ class Route < ApplicationRecord
   end
 
   def better_drivers_query
-    buses=self.buses.includes(:drivers)
+    buses = self.buses.includes(:drivers)
 
-    ans={}
+    ans = {}
     buses.each do |bus|
-      ans[bus.id]=bus.drivers
+      ans[bus.id] = bus.drivers
     end
     ans
   end

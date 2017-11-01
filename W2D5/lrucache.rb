@@ -1,18 +1,18 @@
 class LRUCache
   def initialize(size)
-    @cache=Array.new(size)
-    @size=size
+    @cache = Array.new(size)
+    @size = size
   end
-  def size
-    @size
-  end
+
+  attr_reader :size
+
   def count
     @cache.count
   end
 
   def add(el)
     @cache.delete(el) if @cache.include?(el)
-    @cache.shift if count==size
+    @cache.shift if count == size
     @cache.push(el)
   end
 
@@ -21,6 +21,6 @@ class LRUCache
   end
 
   private
-  # helper methods go here!
 
+  # helper methods go here!
 end

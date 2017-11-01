@@ -1,8 +1,8 @@
 class Artist < ApplicationRecord
   has_many :albums,
-    class_name: 'Album',
-    foreign_key: :artist_id,
-    primary_key: :id
+           class_name: 'Album',
+           foreign_key: :artist_id,
+           primary_key: :id
 
   def n_plus_one_tracks
     albums = self.albums
@@ -23,12 +23,12 @@ class Artist < ApplicationRecord
     #
     # tracks_count
     #
-      albums=self
-      .albums
-      .select("albums.title, COUNT(*) as track_count")
-      .joins(:tracks)
-      .group('albums.title')
-      album_counts = {}
+    albums = self
+             .albums
+             .select('albums.title, COUNT(*) as track_count')
+             .joins(:tracks)
+             .group('albums.title')
+    album_counts = {}
     albums.each do |album|
       album_counts[album.title] = album.track_count
     end

@@ -2,7 +2,7 @@
 class Stack
   @stack
   def initialize
-    @stack=[]
+    @stack = []
   end
 
   def add(el)
@@ -10,7 +10,7 @@ class Stack
   end
 
   def remove
-  @stack.pop
+    @stack.pop
   end
 
   def show
@@ -21,11 +21,11 @@ end
 class Queue
   @queue
   def initialize
-    @queue=[]
+    @queue = []
   end
 
   def enqueue(el)
-    push (el)
+    push el
   end
 
   def dequeue
@@ -35,17 +35,17 @@ end
 
 class Map
   @map
-  def initialize()
-    @map=[]
+  def initialize
+    @map = []
   end
 
-  def assign (key, val)
+  def assign(key, val)
     @map.each do |entry|
-      if entry[0]==key
-        entry[1]=val
+      if entry[0] == key
+        entry[1] = val
         return self
       end
     end
-    @map.push([key,val])
+    @map.push([key, val])
   end
 end

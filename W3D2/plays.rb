@@ -15,7 +15,7 @@ class Play
   attr_accessor :title, :year, :playwright_id
 
   def self.all
-    data = PlayDBConnection.instance.execute("SELECT * FROM plays")
+    data = PlayDBConnection.instance.execute('SELECT * FROM plays')
     data.map { |datum| Play.new(datum) }
   end
 
@@ -28,14 +28,14 @@ class Play
     data.map { |datum| Play.new(datum) }
   end
 
-    def find_by_playwright(name)
-      data = PlayDBConnection.instance.execute(<<-SQL, name)
+  def find_by_playwright(name)
+    data = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT *
       FROM plays
       WHERE name like ?
       SQL
-      data.map { |datum| Play.new(datum) }
-    end
+    data.map { |datum| Play.new(datum) }
+  end
 
   def initialize(options)
     @id = options['id']
@@ -66,18 +66,16 @@ class Play
         id = ?
     SQL
   end
-
-
 end
 class Playwright
   attr_accessor :name, :id, :birth_year
 
   def self.all
-    data = PlayDBConnection.instance.execute("SELECT * FROM plays")
+    data = PlayDBConnection.instance.execute('SELECT * FROM plays')
     data.map { |datum| Play.new(datum) }
   end
 
-  def self.get_plays(name)
+  def self.get_plays(_name)
     data = PlayDBConnection.instance.execute(<<-SQL, title)
     SELECT *
     FROM playwrights
@@ -86,11 +84,10 @@ class Playwright
     data.map { |datum| Play.new(datum) }
   end
 
-
-    # laywrightsCREATE TABLE playwrights (
-    #   id INTEGER PRIMARY KEY,
-    #   name TEXT NOT NULL,
-    #   birth_year INTEGER
+  # laywrightsCREATE TABLE playwrights (
+  #   id INTEGER PRIMARY KEY,
+  #   name TEXT NOT NULL,
+  #   birth_year INTEGER
   def initialize(options)
     @id = options['id']
     @name = options['name']
@@ -110,7 +107,7 @@ class Playwright
 
   def update
     raise "#{self} not in database" unless @id
-    PlayDBConnection.instance.execute(<<-SQL,@name, @birth_year)
+    PlayDBConnection.instance.execute(<<-SQL, @name, @birth_year)
       UPDATE
         playwrights
       SET
@@ -119,8 +116,6 @@ class Playwright
         id = ?
     SQL
   end
-
-
 end
 #
 

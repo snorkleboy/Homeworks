@@ -9,7 +9,7 @@ class Mancala
   end
 
   def play
-    puts "Welcome to Mancala"
+    puts 'Welcome to Mancala'
     @board.render
     current_player = @player1
     until won?
@@ -33,7 +33,7 @@ class Mancala
           @board.valid_move?(start_pos)
         rescue Exception => e
           puts e.message
-        retry
+          retry
         end
         move_result = @board.make_move(start_pos, current_player.name)
       else
@@ -44,13 +44,13 @@ class Mancala
   end
 
   def won?
-     @board.one_side_empty?
+    @board.one_side_empty?
   end
 
   def winner_message
     winner = @board.winner
     if winner == :draw
-      "It was a draw!"
+      'It was a draw!'
     else
       "Congrats, #{winner}!"
     end
@@ -58,7 +58,7 @@ class Mancala
 
   def print_indices
     puts "\nCup indices:"
-    puts "12  11  10   9   8   7"
-    puts " 1   2   3   4   5   6"
+    puts '12  11  10   9   8   7'
+    puts ' 1   2   3   4   5   6'
   end
 end
